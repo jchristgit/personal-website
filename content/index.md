@@ -68,7 +68,7 @@ welcome to visit my [GitHub](https://github.com/jchristgit).
 </details>
 
 ## Blog posts
-### 2019
-- [A new blog using pandoc and make](blog/a-new-blog-using-pandoc-and-make.html)
+- [**A new blog using pandoc and make**](blog/a-new-blog-using-pandoc-and-make.html)
+  (6st June 2019)
 
 <!-- vim: set foldmethod=manual textwidth=80 sw=2 ts=2: -->
