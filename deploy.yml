@@ -1,0 +1,15 @@
+---
+- hosts: spike
+  tasks:
+    - name: ensure the local build is up-to-date
+      make:
+        chdir: "{{ lookup('env', 'PWD') }}"
+        target: content
+      delegate_to: localhost
+
+    - name: ensure the remote html is up-to-date
+      become: true
+      synchronize:
+        src: public/
+        delete: true
+        dest: /var/www/jchri.st/
