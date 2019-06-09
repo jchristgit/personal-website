@@ -35,11 +35,11 @@ content: public/index.html public/blog/a-new-blog-using-pandoc-and-make.html
 # to make sure it is always present before running
 # pandoc on a clean checkout or after removing `public`.
 public public/blog:
-	mkdir public
-	mkdir public/blog
+    mkdir public
+    mkdir public/blog
 
 public/%.html: content/%.md public public/blog $(BASES)
-	cat $(BASES) $< | $(PANDOC) -s -o $@
+    cat $(BASES) $< | $(PANDOC) -s -o $@
 ```
 
 The nice thing here is that it only rebuilds what it needs to rebuild when it
