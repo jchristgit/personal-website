@@ -18,10 +18,10 @@ If you think about it, three of the four components here are not really needed,
 given that the site is purely static. Therefore, it was time to check out static
 site generators.
 
-After trying out Hugo, I figured I might as well make my own. After all,
-[pandoc](https://pandoc.org) exists and I've never had any issues with it.
-`make` is used for building the website. My Makefile knowledge is near zero but
-this is a good opportunity to learn it.
+I've tried out Hugo, but after a collection of problems, I figured I might as
+well make my own. After all, [pandoc](https://pandoc.org) exists and I've never
+had any issues with it.  `make` is used for building the website. My Makefile
+knowledge is near zero but this is a good opportunity to learn it.
 
 The Makefile used to build this website:
 
