@@ -1,5 +1,5 @@
 ---
-title: A new blog with pandoc and make
+title: A new blog using pandoc and make
 keywords:
   - blog
   - posts
