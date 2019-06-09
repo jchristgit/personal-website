@@ -19,9 +19,9 @@ given that the site is purely static. Therefore, it was time to check out static
 site generators.
 
 After trying out Hugo, I figured I might as well make my own. After all,
-[pandoc](https://pandoc.org) exists and has always been a perfect document
-converter. `make` is used for building the website. My Makefile knowledge is
-near zero but this is a good opportunity to learn it.
+[pandoc](https://pandoc.org) exists and I've never had any issues with it.
+`make` is used for building the website. My Makefile knowledge is near zero but
+this is a good opportunity to learn it.
 
 The Makefile used to build this website:
 
