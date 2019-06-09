@@ -29,7 +29,7 @@ The Makefile used to build this website:
 PANDOC := pandoc
 BASES := include/style.html
 
-content: public/index.html public/blog/new-blog.html
+content: public/index.html public/blog/a-new-blog-using-pandoc-and-make.html
 
 # `public/` is not checked into git, this is used
 # to make sure it is always present before running
