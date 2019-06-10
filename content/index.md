@@ -6,7 +6,8 @@ keywords:
 ---
 
 There's not much here yet. Until I put something interesting here, you're
-welcome to visit my [GitHub](https://github.com/jchristgit).
+welcome to visit my [GitHub](https://github.com/jchristgit). If you want to send
+me an e-mail, you can find it in my PGP key below.
 
 
 <details>
