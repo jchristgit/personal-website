@@ -1,5 +1,5 @@
 PANDOC := pandoc
-BASES := include/style.html
+HEADER := include/style.html
 
 content: public/index.html public/blog/a-new-blog-using-pandoc-and-make.html
 
@@ -11,4 +11,4 @@ public public/blog:
 	mkdir public/blog
 
 public/%.html: content/%.md public public/blog $(BASES)
-	cat $(BASES) $< | $(PANDOC) -s -o $@
+	$(PANDOC) $< -H $(HEADER) -s -o $@
