@@ -69,7 +69,10 @@ me an e-mail, you can find it in my PGP key below.
 </details>
 
 ## Blog posts
-- [**A new blog using pandoc and make**](blog/a-new-blog-using-pandoc-and-make.html)
-  (6th June 2019)
+- [**Automatically secure NGINX with Let's Encrypt and
+  Ansible**](blog/automatically-secure-nginx-with-letsencrypt-and-ansible.html)
+  (5th July 2019)
+- [**A new blog using pandoc and
+  make**](blog/a-new-blog-using-pandoc-and-make.html) (6th June 2019)
 
 <!-- vim: set foldmethod=manual textwidth=80 sw=2 ts=2: -->

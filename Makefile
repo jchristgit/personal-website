@@ -1,7 +1,10 @@
 PANDOC := pandoc
 HEADER := include/style.html
 
-content: public/index.html public/blog/a-new-blog-using-pandoc-and-make.html
+content: \
+	public/index.html \
+	public/blog/a-new-blog-using-pandoc-and-make.html \
+	public/blog/automatically-secure-nginx-with-letsencrypt-and-ansible.html
 
 # `public/` is not checked into git, this is used
 # to make sure it is always present before running
