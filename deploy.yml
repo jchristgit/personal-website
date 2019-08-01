@@ -9,7 +9,6 @@
 
     - name: ensure the remote html is up-to-date
       become: true
-      synchronize:
+      copy:
         src: public/
-        delete: true
         dest: /var/www/jchri.st/
