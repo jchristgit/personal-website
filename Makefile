@@ -1,17 +1,14 @@
 PANDOC := pandoc
-HEADER := include/style.html
+PANDOC_OPTS := -H include/style.html -H include/rsslink.html
 
 content: \
 	public/index.html \
 	public/blog/a-new-blog-using-pandoc-and-make.html \
-	public/blog/automatically-secure-nginx-with-letsencrypt-and-ansible.html
+	public/blog/automatically-secure-nginx-with-letsencrypt-and-ansible.html \
+	public/blog.rss
 
-# `public/` is not checked into git, this is used
-# to make sure it is always present before running
-# pandoc on a clean checkout or after removing `public`.
-public public/blog:
-	mkdir public
-	mkdir public/blog
+public/blog.rss: $(wildcard content/*.md) scripts/buildrss.py
+	python3 scripts/buildrss.py -o public/blog.rss
 
-public/%.html: content/%.md public public/blog $(BASES)
-	$(PANDOC) $< -H $(HEADER) -s -o $@
+public/%.html: content/%.md $(BASES)
+	$(PANDOC) $< $(PANDOC_OPTS) -s -o $@
