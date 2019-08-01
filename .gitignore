@@ -1,1 +1,4 @@
-public
+public/*
+!public/.gitkeep
+public/blog/*
+!public/blog/.gitkeep
