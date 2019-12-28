@@ -1,13 +1,13 @@
 ---
 - hosts: spock
   tasks:
-    - name: ensure the local build is up-to-date
+    - name: build content locally
       make:
         chdir: "{{ lookup('env', 'PWD') }}"
         target: content
       delegate_to: localhost
 
-    - name: ensure the remote html is up-to-date
+    - name: copy content to the remote
       become: true
       copy:
         src: public/
