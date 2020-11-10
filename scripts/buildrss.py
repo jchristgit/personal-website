@@ -64,7 +64,7 @@ def build_xml(sources):
     ctitle = ET.SubElement(channel, 'title')
     ctitle.text = 'jchri.st rss'
     cdescription = ET.SubElement(channel, 'description')
-    cdescription.text = 'ansible erlang ...'
+    cdescription.text = 'ansible, python, erlang, and further ramblings'
     clink = ET.SubElement(channel, 'link')
     clink.text = 'https://jchri.st'
 
