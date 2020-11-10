@@ -1,6 +1,6 @@
 BASES := $(wildcard include/*.html)
 PANDOC := pandoc
-PANDOC_OPTS := -H include/style.html -H include/rsslink.html
+PANDOC_OPTS := -H include/style.html -H include/rsslink.html -M document-css=false
 
 content: \
 	public/index.html \
