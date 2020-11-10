@@ -68,6 +68,8 @@ me an e-mail, you can find it in my PGP key below.
 </details>
 
 ## Blog posts
+- [**Deploying Gitea with Ansible*+](blog/deploying-gitea-with-ansible.html)
+  (10th November 2020)
 - [**Automatically secure NGINX with Let's Encrypt and
   Ansible**](blog/automatically-secure-nginx-with-letsencrypt-and-ansible.html)
   (5th July 2019)
