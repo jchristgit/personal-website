@@ -1,5 +1,7 @@
 import argparse
+import datetime
 import glob
+import operator
 import os.path
 import textwrap
 from xml.etree import ElementTree as ET
@@ -63,6 +65,16 @@ def make_link(path):
     return f'https://jchri.st/{path.replace(".md", ".html").replace("content/", "")}'
 
 
+def getpubdate(path: str) -> datetime.date:
+    with open(path) as f:
+        for line in f:
+            if line.startswith('date:'):
+                # 'date:', 'July', '5,', '2019'
+                _, month, day, year = line.split()
+                dt = datetime.datetime.strptime(line, 'date: %B %d, %Y\n')
+                return dt.date()
+
+
 def build_xml(sources):
     rss = ET.Element('rss', version='2.0')
     channel = ET.SubElement(rss, 'channel')
@@ -74,7 +86,11 @@ def build_xml(sources):
     clink = ET.SubElement(channel, 'link')
     clink.text = 'https://jchri.st'
 
-    for source in sources:
+    for idx, (source, published) in enumerate(sources):
+        if idx == 0:
+            cpubdate = ET.SubElement(channel, 'pubDate')
+            cpubdate.text = published.strftime('%a, %d %b %Y')
+
         item = ET.SubElement(channel, 'item')
         title = ET.SubElement(item, 'title')
         title.text = take_title(source)
@@ -87,12 +103,16 @@ def build_xml(sources):
 
         guid = ET.SubElement(item, 'guid')
         guid.text = link.text
+
+        pubdate = ET.SubElement(item, 'pubDate')
+        pubdate.text = published.strftime('%a, %d %b %Y')
     return rss
 
 
 def main():
     args = get_parser().parse_args()
-    sources = sorted(glob.iglob(args.source_dir), key=os.path.getmtime, reverse=True)
+    files_by_date = ((path, getpubdate(path)) for path in glob.iglob(args.source_dir))
+    sources = sorted(files_by_date, key=operator.itemgetter(1), reverse=True)
 
     with open(args.outfile, 'w+') as f:
         f.truncate()
