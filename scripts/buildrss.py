@@ -85,6 +85,8 @@ def build_xml(sources):
     cdescription.text = 'ansible, python, erlang, and further ramblings'
     clink = ET.SubElement(channel, 'link')
     clink.text = 'https://jchri.st'
+    clastbuilddate = ET.SubElement(channel, 'lastBuildDate')
+    clastbuilddate.text = datetime.date.today().strftime('%a, %d %b %Y')
 
     for idx, (source, published) in enumerate(sources):
         if idx == 0:
