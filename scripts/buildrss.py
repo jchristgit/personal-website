@@ -4,6 +4,7 @@ import glob
 import operator
 import os.path
 import textwrap
+import time
 from xml.etree import ElementTree as ET
 
 
@@ -65,14 +66,13 @@ def make_link(path):
     return f'https://jchri.st/{path.replace(".md", ".html").replace("content/", "")}'
 
 
-def getpubdate(path: str) -> datetime.date:
+def getpubdate(path: str) -> datetime.datetime:
     with open(path) as f:
         for line in f:
             if line.startswith('date:'):
                 # 'date:', 'July', '5,', '2019'
                 _, month, day, year = line.split()
-                dt = datetime.datetime.strptime(line, 'date: %B %d, %Y\n')
-                return dt.date()
+                return datetime.datetime.strptime(line, 'date: %B %d, %Y\n')
 
 
 def build_xml(sources):
@@ -80,18 +80,23 @@ def build_xml(sources):
     channel = ET.SubElement(rss, 'channel')
 
     ctitle = ET.SubElement(channel, 'title')
-    ctitle.text = 'jchri.st rss'
+    ctitle.text = 'jchri.st blog'
     cdescription = ET.SubElement(channel, 'description')
     cdescription.text = 'ansible, python, erlang, and further ramblings'
     clink = ET.SubElement(channel, 'link')
     clink.text = 'https://jchri.st'
     clastbuilddate = ET.SubElement(channel, 'lastBuildDate')
-    clastbuilddate.text = datetime.date.today().strftime('%a, %d %b %Y')
+    clastbuilddate.text = datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S +0000')
 
     for idx, (source, published) in enumerate(sources):
+        lastmod = os.path.getmtime(source)
+        as_time = time.localtime(lastmod)
+        on_top = datetime.timedelta(hours=as_time.tm_hour, minutes=as_time.tm_min, seconds=as_time.tm_sec)
+        published += on_top
+
         if idx == 0:
             cpubdate = ET.SubElement(channel, 'pubDate')
-            cpubdate.text = published.strftime('%a, %d %b %Y')
+            cpubdate.text = published.strftime('%a, %d %b %Y %H:%M:%S +0200')
 
         item = ET.SubElement(channel, 'item')
         title = ET.SubElement(item, 'title')
@@ -107,7 +112,7 @@ def build_xml(sources):
         guid.text = link.text
 
         pubdate = ET.SubElement(item, 'pubDate')
-        pubdate.text = published.strftime('%a, %d %b %Y')
+        pubdate.text = published.strftime('%a, %d %b %Y %H:%M:%S +0200')
     return rss
 
 
