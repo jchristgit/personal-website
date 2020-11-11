@@ -76,7 +76,8 @@ def getpubdate(path: str) -> datetime.datetime:
 
 
 def build_xml(sources):
-    rss = ET.Element('rss', version='2.0')
+    rsstags = {'version': '2.0', 'xmlns:atom': "http://www.w3.org/2005/Atom"}
+    rss = ET.Element('rss', **rsstags)
     channel = ET.SubElement(rss, 'channel')
 
     ctitle = ET.SubElement(channel, 'title')
@@ -87,6 +88,7 @@ def build_xml(sources):
     clink.text = 'https://jchri.st'
     clastbuilddate = ET.SubElement(channel, 'lastBuildDate')
     clastbuilddate.text = datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S +0000')
+    catomlink = ET.SubElement(channel, 'atom:link', href='https://jchri.st/blog.rss', rel='self', type='application/rss+xml')
 
     for idx, (source, published) in enumerate(sources):
         lastmod = os.path.getmtime(source)
