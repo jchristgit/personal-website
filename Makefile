@@ -1,4 +1,5 @@
 BASES := $(wildcard include/*.html)
+BUILDRSS_FLAGS ?= # Use "-p" / "--pretty-print" to get pretty RSS.
 PANDOC := pandoc
 PANDOC_OPTS := -H include/style.html -H include/rsslink.html -M document-css=false
 
@@ -10,7 +11,7 @@ content: \
 	public/blog.rss
 
 public/blog.rss: $(wildcard content/*.md) scripts/buildrss.py
-	python3 scripts/buildrss.py -o public/blog.rss
+	python3 scripts/buildrss.py --outfile public/blog.rss $(BUILDRSS_FLAGS)
 
 public/%.html: content/%.md $(BASES)
 	$(PANDOC) $< $(PANDOC_OPTS) -s -o $@

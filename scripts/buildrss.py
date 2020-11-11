@@ -19,6 +19,12 @@ def get_parser():
         help="where to write the RSS file",
         default='public/rss.xml'
     )
+    parser.add_argument(
+        '-p', '--pretty-print',
+        help="pretty print XML",
+        action='store_true',
+        default=False,
+    )
     return parser
 
 
@@ -91,6 +97,8 @@ def main():
     with open(args.outfile, 'w+') as f:
         f.truncate()
         feed = build_xml(sources)
+        if args.pretty_print:
+            ET.indent(feed)
         f.write(ET.tostring(feed).decode())
 
 
