@@ -60,8 +60,7 @@ Maximum passphrase length of 127 from passphrase argument exceeded
 ```
 
 Excellent. How long is my password, anyways? Python claims 116 characters for
-the unicode string. In UTF-8 encoded form, the passphrase is 167 characters
-long.
+the unicode string. In UTF-8 encoded form, the passphrase is 167 bytes long.
 
 When generating passwords, I usually just slide the password length selector in
 KeePassXC to some big amount. I suppose that sometimes, that may be an issue.
