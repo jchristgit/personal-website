@@ -8,6 +8,7 @@ content: \
 	public/blog/a-new-blog-using-pandoc-and-make.html \
 	public/blog/automatically-secure-nginx-with-letsencrypt-and-ansible.html \
 	public/blog/deploying-gitea-with-ansible.html \
+	public/blog/apfs-sadness-on-macos-big-sur.html \
 	public/blog.rss
 
 public/blog.rss: $(wildcard content/*.md) scripts/buildrss.py

@@ -69,6 +69,8 @@ communication, you can use my PGP key below.
 </details>
 
 ## Blog posts
+- [**APFS sadness on macOS Big Sur**](blog/apfs-sadness-on-macos-big-sur.html)
+  (28th November 2020)
 - [**Deploying Gitea with Ansible**](blog/deploying-gitea-with-ansible.html)
   (10th November 2020)
 - [**Automatically secure NGINX with Let's Encrypt and
